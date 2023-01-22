@@ -6,17 +6,17 @@ rsv = zeros(200,1); % response sum vector
 %recording
 for j = 2:length(stimulus)
     if stimulus(j) > 0.005
-        if length(timemarks) > 0
+        if ~isempty(timemarks)
             if j - timemarks(end) > 2300 %time between stimulations, sample rate 10k
                 timemarks = [timemarks j];
             end   
         else timemarks = [timemarks j];
         end
     end
-    if length(timemarks) > 0
+    if ~isempty(timemarks)
         iter_start = timemarks(end);
         iter_end = iter_start + 200;
-        if j >= iter_start & j < iter_end
+        if j >= iter_start && j < iter_end
             q = j - iter_start + 1;
             rsv(q) = rsv(q) + response(j);
         end
