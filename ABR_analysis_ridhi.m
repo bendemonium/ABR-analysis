@@ -35,7 +35,9 @@ end
 
 %average plot
 av = rsv./length(timemarks);
-plot(av)
-ylim([-0.02 0.02]);
+plot(av, 'r','LineWidth',2)
+ylim([-0.006 0.006]);
+title('Average Response Plot');
+ylabel('Response (V)');
 
 
